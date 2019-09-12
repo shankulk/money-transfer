@@ -1,0 +1,8 @@
+target/
+.idea/
+**.log
+**.patch
+out/
+
+money-transfer.iml
+dependency-reduced-pom.xml
