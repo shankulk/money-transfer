@@ -1,4 +1,33 @@
+
+# Database Settings
+database:
+  driverClass: org.h2.Driver
+  user: sa
+  password: sa
+  url: jdbc:h2:file:/data/money-transfer
+  # url: jdbc:h2:mem:money-transfer
+
+# Server URL and Ports
 server:
-  applicationConnectors:
-    - type: http
-      port: 8080
+  type: simple
+  connector:
+    type: http
+    port: 8080
+
+# Logback Logging Config
+logging:
+  level: INFO
+  loggers:
+    com.shankulk: DEBUG
+    org.hibernate.SQL:
+      level: DEBUG
+  appenders:
+    - type: console
+    - type: file
+      threshold: INFO
+      logFormat: "%-6level [%d{HH:mm:ss.SSS}] [%t] %logger{5} - %X{code} %msg %n"
+      currentLogFilename: /logs/app.log
+      archivedLogFilenamePattern: /logs/app-%d{yyyy-MM-dd}-%i.log.gz
+      archivedFileCount: 2
+      timeZone: BST
+      maxFileSize: 10MB
