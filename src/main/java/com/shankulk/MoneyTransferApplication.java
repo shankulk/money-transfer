@@ -9,6 +9,7 @@ import com.shankulk.exception.mapper.InsufficientBalanceExceptionMapper;
 import com.shankulk.exception.mapper.UnsupportedCurrencyExceptionMapper;
 import com.shankulk.resource.AccountsRoute;
 import com.shankulk.resource.MoneyTransferRoute;
+import com.shankulk.resource.TransactionsRoute;
 import com.shankulk.service.MoneyTransferService;
 import io.dropwizard.Application;
 import io.dropwizard.db.DataSourceFactory;
@@ -38,6 +39,7 @@ public class MoneyTransferApplication extends Application<AppConfig> {
 
         TransactionsDao transactionsDao = new TransactionsDao(hibernateBundle.getSessionFactory());
         environment.jersey().register(new MoneyTransferRoute(new MoneyTransferService(accountsDao, transactionsDao)));
+        environment.jersey().register(new TransactionsRoute(transactionsDao));
 
         environment.jersey().register(InsufficientBalanceExceptionMapper.class);
         environment.jersey().register(UnsupportedCurrencyExceptionMapper.class);

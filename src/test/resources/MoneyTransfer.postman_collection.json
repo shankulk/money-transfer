@@ -1,0 +1,124 @@
+{
+	"info": {
+		"_postman_id": "210e9cc7-0799-4100-9529-9b2008ab7e13",
+		"name": "MoneyTransfer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1_Create_Accounts",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n\t{\n\t\t\"accountId\" : 1234,\n\t\t\"accountName\" : \"Shantanu Kulkarni\",\n\t\t\"balance\" : {\n\t\t\t\"amount\": 500.25,\n\t\t\t\"currencyCode\": \"GBP\"\n\t\t}\n\t\n\t},\n\t{\n\t\t\"accountId\" : 3456,\n\t\t\"accountName\" : \"Shweta Kulkarni\",\n\t\t\"balance\" : {\n\t\t\t\"amount\": 10000.00,\n\t\t\t\"currencyCode\": \"INR\"\n\t\t}\n\t\n\t}\n\n]"
+				},
+				"url": {
+					"raw": "http://localhost:8080/application/accounts/batch",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"application",
+						"accounts",
+						"batch"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2_Get_All_Accounts",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/application/accounts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"application",
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3_Move_Money",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"destinationAccountId\": 3456,\n\t\"money\": {\n\t\t\"amount\": 90.00,\n        \"currencyCode\": \"INR\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/application/money/movements/1234",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"application",
+						"money",
+						"movements",
+						"1234"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4_Get_All_Transactions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/application/transactions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"application",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
