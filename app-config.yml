@@ -4,8 +4,10 @@ database:
   driverClass: org.h2.Driver
   user: sa
   password: sa
-  url: jdbc:h2:file:/data/money-transfer
-  # url: jdbc:h2:mem:money-transfer
+  url: jdbc:h2:mem:money-transfer
+  properties:
+    hibernate.dialect: org.hibernate.dialect.H2Dialect
+    hibernate.hbm2ddl.auto: create
 
 # Server URL and Ports
 server:
@@ -26,8 +28,8 @@ logging:
     - type: file
       threshold: INFO
       logFormat: "%-6level [%d{HH:mm:ss.SSS}] [%t] %logger{5} - %X{code} %msg %n"
-      currentLogFilename: /logs/app.log
-      archivedLogFilenamePattern: /logs/app-%d{yyyy-MM-dd}-%i.log.gz
+      currentLogFilename: /tmp/app.log
+      archivedLogFilenamePattern: /tmp/app-%d{yyyy-MM-dd}-%i.log.gz
       archivedFileCount: 2
       timeZone: BST
       maxFileSize: 10MB

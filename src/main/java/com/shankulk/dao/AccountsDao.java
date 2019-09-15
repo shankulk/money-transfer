@@ -1,12 +1,12 @@
 package com.shankulk.dao;
 
+import com.shankulk.domain.Account;
 import org.hibernate.SessionFactory;
 
-public class AccountsDao {
-
-    private final SessionFactory sessionFactory;
+public class AccountsDao extends BaseDao<Account> {
 
     public AccountsDao(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
+        super(sessionFactory);
     }
+
 }
