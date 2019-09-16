@@ -11,6 +11,7 @@ import javax.ws.rs.core.Response;
 import org.eclipse.jetty.http.HttpStatus;
 import org.junit.ClassRule;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mockito;
 
 import static com.shankulk.TestFixtures.getDummyAccount;
@@ -26,6 +27,12 @@ public class AccountsRouteTest {
             .builder()
             .addResource(new AccountsRoute(accountsDao))
             .build();
+
+    @BeforeEach
+    public void init() {
+        Mockito.clearInvocations(accountsDao);
+    }
+
 
     @Test
     public void testCreateAccount() {

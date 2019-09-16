@@ -9,6 +9,7 @@ import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import org.junit.ClassRule;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mockito;
 
 import static com.shankulk.TestFixtures.getTransaction;
@@ -18,12 +19,16 @@ public class TransactionsRouteTest {
 
     private static TransactionsDao transactionDao = Mockito.mock(TransactionsDao.class);
 
+    @BeforeEach
+    public void init() {
+        Mockito.clearInvocations(transactionDao);
+    }
+
     @ClassRule
     public static final ResourceTestRule RESOURCE_TEST_RULE = ResourceTestRule
             .builder()
             .addResource(new TransactionsRoute(transactionDao))
             .build();
-
 
     @Test
     public void getAllTransactions() {

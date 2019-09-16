@@ -12,6 +12,7 @@ import javax.ws.rs.core.Response;
 import org.eclipse.jetty.http.HttpStatus;
 import org.junit.ClassRule;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mockito;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -22,6 +23,12 @@ import static org.mockito.Mockito.when;
 public class MoneyTransferRouteTest {
 
     private static MoneyTransferService moneyTransferService = Mockito.mock(MoneyTransferService.class);
+
+    @BeforeEach
+    public void init() {
+        Mockito.clearInvocations(moneyTransferService);
+    }
+
 
     @ClassRule
     public static final ResourceTestRule RESOURCE_TEST_RULE = ResourceTestRule
